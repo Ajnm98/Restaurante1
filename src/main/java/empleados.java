@@ -14,7 +14,7 @@ public class empleados extends JFrame {
 
     public empleados(){
 
-        
+
 
         setTitle("Administración empleados");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
