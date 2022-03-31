@@ -1,5 +1,7 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class empleados extends JFrame {
     JTextField campoId;
@@ -14,17 +16,24 @@ public class empleados extends JFrame {
 
     public empleados(){
 
+        super("Administración empleados");
 
+        JPanel principal = crearPanelImagenFondo();
+        principal.setSize(new Dimension(800,800));
 
-        setTitle("Administración empleados");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+
+        setSize(500, 300);
+        //setLayout(new BorderLayout());
 
 
         JPanel p1 = new JPanel();
+        p1.setOpaque(false);
         p1.setLayout(new GridLayout(2, 2));
 
-        p1.add(new JLabel("ID: "));
+        JLabel et1 = new JLabel("ID: ");
+        et1.setOpaque(false);
+        p1.add(et1);
         campoId = new JTextField(1);
         p1.add(campoId);
 
@@ -59,13 +68,43 @@ public class empleados extends JFrame {
         p2.add(botoneliminar);
 
 
-        setContentPane(p1, p2);
-        setResizable(false);
+
+        JSplitPane sl = new JSplitPane(SwingConstants.HORIZONTAL, p1, p2);
+        sl.setOpaque(false);
+
+
+        principal.add(sl);
+
+       // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      // principal.add(sl);
+       // testFrame.add(p2);
+      //pack();
+        //testFrame.setSize(1000, 500);
+        //testFrame.setLocation(400, 300);
+       setVisible(true);
+       setContentPane(principal);
+        //setContentPane(p1, p2);
+       // setResizable(false);
         //p1.setBackground(Color.green);
-        setSize(600, 100);
-        setVisible(true);
+        //setSize(600, 100);
+        //setVisible(true);
     }
 
 
+    private JPanel crearPanelImagenFondo(){
+        ImageIcon imagen = new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\wood.jpg");
+        Image imagenLimitadaTamanyo = imagen.getImage().getScaledInstance(500, 300,  java.awt.Image.SCALE_SMOOTH);
+        imagen.setImage(imagenLimitadaTamanyo);
+        JPanel panel = new JPanel(){
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(imagen.getImage(), 0, 0, null);
+            }
+        };
+
+        return panel;
+
+
+    }
 
 }
