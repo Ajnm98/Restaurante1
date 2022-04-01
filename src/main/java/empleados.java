@@ -73,21 +73,13 @@ public class empleados extends JFrame {
         sl.setOpaque(false);
 
 
-        principal.add(sl);
+        principal.add(sl, BorderLayout.CENTER);
 
-       // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      // principal.add(sl);
-       // testFrame.add(p2);
-      //pack();
-        //testFrame.setSize(1000, 500);
-        //testFrame.setLocation(400, 300);
+
        setVisible(true);
        setContentPane(principal);
-        //setContentPane(p1, p2);
-       // setResizable(false);
-        //p1.setBackground(Color.green);
-        //setSize(600, 100);
-        //setVisible(true);
+        setResizable(false);
+
     }
 
 

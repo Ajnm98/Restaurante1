@@ -10,6 +10,9 @@ public class admin extends JFrame {
     private JButton botonmesas;
 
 
+
+
+
     public admin() {
         setTitle("Pantalla administrador");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,10 +28,12 @@ public class admin extends JFrame {
 
 
         botonprodu = new JButton(new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\product.png"));
+        botonprodu.addActionListener(new abrirVentanaProductos());
         jPanel.add(botonprodu);
 
 
         botonmesas = new JButton(new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\table.png"));
+        botonmesas.addActionListener(new abrirVentanaMesas());
         jPanel.add(botonmesas);
 
 
@@ -43,6 +48,20 @@ public class admin extends JFrame {
     class abrirVentanaempleados implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             new empleados();
+
+        }
+    }
+
+    class abrirVentanaMesas implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            new mesas();
+
+        }
+    }
+
+    class abrirVentanaProductos implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            new productos();
 
         }
     }
