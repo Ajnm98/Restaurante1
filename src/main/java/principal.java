@@ -26,12 +26,15 @@ public class principal extends JFrame {
 
 
         botoncliente = new JButton((new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\client.png")));
+        botoncliente.addActionListener(new abrirVentanaCliente());
         jPanel.add(botoncliente);
 
         botoncamarero = new JButton((new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\waiter.png")));
+        botoncamarero.addActionListener(new abrirVentanaCamarero());
         jPanel.add(botoncamarero);
 
         botoncocinero = new JButton((new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\chef.png")));
+        botoncocinero.addActionListener(new abrirVentanaCocinero());
         jPanel.add(botoncocinero);
 
 
@@ -46,6 +49,30 @@ public class principal extends JFrame {
     class abrirVentanaAdministrador implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             new admin();;
+        }
+
+
+    }
+
+    class abrirVentanaCliente implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            new cliente();;
+        }
+
+
+    }
+
+    class abrirVentanaCamarero implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            new camarero();;
+        }
+
+
+    }
+
+    class abrirVentanaCocinero implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            new cocinero();;
         }
 
 
