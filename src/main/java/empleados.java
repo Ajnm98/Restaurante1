@@ -1,6 +1,11 @@
+import bbdd.EmpleadosBBDD;
+import modelos.Empleados;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 public class empleados extends JFrame {
@@ -58,8 +63,21 @@ public class empleados extends JFrame {
         botoncrear = new JButton("Crear");
         p2.add(botoncrear);
 
+
         botonbuscar = new JButton("Buscar");
         p2.add(botonbuscar);
+        botonbuscar.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                Integer idEmpleado = Integer.valueOf(String.valueOf(et1));
+                Empleados empleado = EmpleadosBBDD.obtenerPorId(idEmpleado);
+                if(empleado!= null) {
+                    cambiarDatosFormulario(String.valueOf(empleado.getId()), empleado.getCodigoEmpleado(), empleado.getNombre(), empleado.getApellidos(),empleado.getTipoEmpleado());
+                }
+                else{
+                    cambiarDatosFormulario(formulario, "", "", "", "","");
+                }
+            }
+        });
 
         botonmodificar = new JButton("Modificar");
         p2.add(botonmodificar);
@@ -98,5 +116,34 @@ public class empleados extends JFrame {
 
 
     }
+
+
+
+    public static String obtenerTextoComponente(JTextField campoId){
+        String valor = campoId.getText();
+
+        return  valor;
+    }
+
+    public static void ponerValorComponente(JTextField campoId,JTextField campoCodigo, JTextField campoNombre,JTextField campoApellidos, String valor) {
+
+
+        if (valor != null) {
+            campoId.setText(valor.toString());
+            campoCodigo.setText(bbdd.EmpleadosBBDD.obtenerPorId(Integer.parseInt(valor)).getCodigoEmpleado());
+            campoNombre.setText(bbdd.EmpleadosBBDD.obtenerPorId(Integer.parseInt(valor)).getNombre());
+            campoApellidos.setText(bbdd.EmpleadosBBDD.obtenerPorId(Integer.parseInt(valor)).getApellidos());
+        }
+
+    }
+    private void cambiarDatosFormulario(JTextField campoId,JTextField campoCodigo, JTextField campoNombre,JTextField campoApellidos, String valor) {
+        ponerValorComponente(campoId, "CampoId", id);
+        ponerValorComponente(formulario, "codigo", codigo);
+        ponerValorComponente(formulario, "nombre", nombre);
+        ponerValorComponente(formulario, "apellidos", apellidos);
+        if(tipoEmpleado!= null) UtilidadesFormulario.ponerValorComponente(formulario, "tipo empleado", tipoEmpleado);
+    }
+
+
 
 }
