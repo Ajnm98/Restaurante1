@@ -37,5 +37,94 @@ public class EmpleadosBBDD extends ConexionCerrar{
         return empleado;
     }
 
+    public static void crearActualizarEmpleado(Empleados empleado){
+
+        Empleados empBaseDatos = obtenerPorId(empleado.getId());
+
+        if(empBaseDatos != null){
+            actualizarEmpleado(empleado);
+        }else{
+            crearEmpleado(empleado);
+        }
+    }
+
+    public static void crearEmpleado(Empleados empleado){
+        Connection con = conectarConBD();
+
+        try {
+            PreparedStatement insert = con.prepareStatement("insert into empleado (id, codigo_empleado, nombre, apellidos, tipo_empleado)" +
+                    "values(?,?,?,?,?)");
+
+            insert.setInt(1, empleado.getId());
+            insert.setString(2,empleado.getCodigoEmpleado());
+            insert.setString(3,empleado.getNombre());
+            insert.setString(4, empleado.getApellidos());
+            insert.setInt(5, empleado.getTipoEmpleado().ordinal());
+
+            //Ejecución del insert
+            insert.executeUpdate();
+
+
+        } catch (SQLException sqle) {
+            System.out.println("Error en la ejecución:"
+                    + sqle.getErrorCode() + " " + sqle.getMessage());
+
+        } finally {
+            cerrarConexion(con);
+        }
+    }
+
+    public static void actualizarEmpleado(Empleados empleado){
+        Connection con = conectarConBD();
+
+        try {
+            PreparedStatement update = con.prepareStatement("update empleado " +
+                    "set codigo_empleado = ? , nombre = ? , apellidos = ? , tipo_empledado = ?" +
+                    "where id = ? ");
+
+            update.setString(1,empleado.getCodigoEmpleado());
+            update.setString(2,empleado.getNombre());
+            update.setString(3, empleado.getApellidos());
+            update.setInt(4, empleado.getTipoEmpleado().ordinal());
+            update.setInt(5, empleado.getId());
+
+
+            //Ejecución del update
+            update.executeUpdate();
+
+
+        } catch (SQLException sqle) {
+            System.out.println("Error en la ejecución:"
+                    + sqle.getErrorCode() + " " + sqle.getMessage());
+
+        } finally {
+            cerrarConexion(con);
+        }
+    }
+
+    public static void eliminarEmpleado(Empleados empleado){
+        Connection con = conectarConBD();
+
+        try {
+            PreparedStatement delete = con.prepareStatement("delete from empleado where id = ? ");
+
+            delete.setInt(1, empleado.getId());
+
+            //Ejecución del delete
+            delete.executeUpdate();
+
+
+        } catch (SQLException sqle) {
+            System.out.println("Error en la ejecución:"
+                    + sqle.getErrorCode() + " " + sqle.getMessage());
+
+        } finally {
+            cerrarConexion(con);
+        }
+    }
+
+
+
+
 
 }
