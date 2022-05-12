@@ -52,14 +52,14 @@ public class EmpleadosBBDD extends ConexionCerrar{
         Connection con = conectarConBD();
 
         try {
-            PreparedStatement insert = con.prepareStatement("insert into empleado (id, codigo_empleado, nombre, apellidos, tipo_empleado)" +
-                    "values(?,?,?,?,?)");
+            PreparedStatement insert = con.prepareStatement("insert into empleado (id, codigo_empleado, nombre, apellidos)" +
+                    "values(?,?,?,?)");
 
             insert.setInt(1, empleado.getId());
             insert.setString(2,empleado.getCodigoEmpleado());
             insert.setString(3,empleado.getNombre());
             insert.setString(4, empleado.getApellidos());
-            insert.setInt(5, empleado.getTipoEmpleado().ordinal());
+
 
             //Ejecución del insert
             insert.executeUpdate();

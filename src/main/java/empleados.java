@@ -1,5 +1,6 @@
 import bbdd.EmpleadosBBDD;
 import modelos.Empleados;
+import modelos.TipoEmpleado;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -62,6 +63,21 @@ public class empleados extends JFrame {
 
         botoncrear = new JButton("Crear");
         p2.add(botoncrear);
+        botoncrear.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                Empleados empleado = new Empleados();
+
+                    empleado.setId(Integer.parseInt(campoId.getText()));
+                    empleado.setCodigoEmpleado(campoCodigo.getText());
+                    empleado.setNombre(String.valueOf(campoNombre));
+                    empleado.setApellidos(String.valueOf(campoApellidos));
+
+                    EmpleadosBBDD.crearEmpleado(empleado);
+            }
+        });
+
+
+
 
 
         botonbuscar = new JButton("Buscar");
@@ -74,7 +90,7 @@ public class empleados extends JFrame {
                     campoId.setText(String.valueOf(empleado.getId()));
                     campoCodigo.setText(String.valueOf(empleado.getCodigoEmpleado()));
                     campoNombre.setText(String.valueOf(empleado.getNombre()));
-                    campoNombre.setText(String.valueOf(empleado.getApellidos()));
+                    campoApellidos.setText(String.valueOf(empleado.getApellidos()));
 
                 }
             }
