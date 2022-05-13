@@ -1,6 +1,16 @@
+import bbdd.EmpleadosBBDD;
+import bbdd.MesasBBDD;
+import bbdd.ProductosBBDD;
+import modelos.Empleados;
+import modelos.Mesas;
+import modelos.Producto;
+import modelos.TipoProducto;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class mesas extends JFrame {
 
@@ -63,15 +73,62 @@ public class mesas extends JFrame {
 
         botoncrear = new JButton("Crear");
         p2.add(botoncrear);
+        botoncrear.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+               Mesas mesa = new Mesas();
+
+                mesa.setId(Integer.parseInt(campoId.getText()));
+                mesa.setNum_mesa(Integer.parseInt(campoNum_Mesa.getText()));
+                mesa.setNum_comen(Integer.parseInt(campoNum_Comen.getText()));
+
+
+                MesasBBDD.crearMesa(mesa);
+            }
+        });
+
+
+
 
         botonbuscar = new JButton("Buscar");
         p2.add(botonbuscar);
+        botonbuscar.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                int idMesa = Integer.parseInt(campoId.getText());
+                Mesas mesa = MesasBBDD.obtenerPorId(idMesa);
+                if(mesa != null){
+                    campoId.setText(String.valueOf(mesa.getId()));
+                    campoNum_Mesa.setText(String.valueOf(mesa.getNum_mesa()));
+                    campoNum_Comen.setText(String.valueOf(mesa.getNum_comen()));
+                }
+            }
+        });
+
+
 
         botonmodificar = new JButton("Modificar");
         p2.add(botonmodificar);
+        botonmodificar.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                Mesas mesa = new Mesas();
+
+                mesa.setId(Integer.parseInt(campoId.getText()));
+                mesa.setNum_mesa(Integer.parseInt(campoNum_Mesa.getText()));
+                mesa.setNum_comen(Integer.parseInt(campoNum_Comen.getText()));
+
+                MesasBBDD.actualizarMesa(mesa);
+            }
+        });
 
         botoneliminar = new JButton("Eliminar");
         p2.add(botoneliminar);
+        botoneliminar.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                Mesas mesa = new Mesas();
+                mesa.setId(Integer.parseInt(campoId.getText()));
+                MesasBBDD.eliminarMesa(mesa);
+
+            }
+        });
 
 
         JPanel estructura = new JPanel(new GridLayout(2,1));

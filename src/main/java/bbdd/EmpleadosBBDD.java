@@ -102,7 +102,9 @@ public class EmpleadosBBDD extends ConexionCerrar{
     }
 
     public static void eliminarEmpleado(Empleados empleado){
+
         Connection con = conectarConBD();
+
 
         try {
             PreparedStatement delete = con.prepareStatement("delete from empleado where id = ? ");

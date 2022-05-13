@@ -1,8 +1,8 @@
 package bbdd;
 
 import modelos.Empleados;
+import modelos.Mesas;
 import modelos.Producto;
-import modelos.TipoEmpleado;
 import modelos.TipoProducto;
 
 import java.sql.Connection;
@@ -10,20 +10,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ProductosBBDD extends ConexionCerrar{
+public class MesasBBDD extends ConexionCerrar{
 
-
-    public static void crearProducto(Producto producto){
+    public static void crearMesa(Mesas mesa){
         Connection con = conectarConBD();
 
         try {
-            PreparedStatement insert = con.prepareStatement("insert into producto (id, descripcion,precio,tipo_producto)" +
-                    "values(?,?,?,?)");
+            PreparedStatement insert = con.prepareStatement("insert into mesa (id, num_mesa, num_comen)" +
+                    "values(?,?,?)");
 
-            insert.setInt(1, producto.getId());
-            insert.setString(2,producto.getDescripcion());
-            insert.setDouble(3,producto.getPrecio());
-            insert.setInt(4, producto.getTipoProducto().ordinal());
+            insert.setInt(1, mesa.getId());
+            insert.setInt(2, mesa.getNum_mesa());
+            insert.setInt(3, mesa.getNum_comen());
+
 
             //Ejecución del insert
             insert.executeUpdate();
@@ -38,22 +37,19 @@ public class ProductosBBDD extends ConexionCerrar{
         }
     }
 
-
-
-
-    public static Producto obtenerPorId(Integer id) {
+    public static Mesas obtenerPorId(Integer id) {
 
         Connection con = conectarConBD();
-        Producto producto = null;
+        Mesas mesa = null;
 
         try {
-            PreparedStatement query = con.prepareStatement("SELECT * FROM producto where id = ?  ");
+            PreparedStatement query = con.prepareStatement("SELECT * FROM mesa where id = ?  ");
             query.setInt(1, id);
             ResultSet rs = query.executeQuery();
 
             //Recorremos los datos
             while (rs.next()) {
-                producto = new Producto(rs.getInt("id"), rs.getString("descripcion"), rs.getDouble("precio"), TipoProducto.values()[rs.getInt("tipo_producto")]);
+                mesa = new Mesas(rs.getInt("id"), rs.getInt("num_mesa"),rs.getInt("num_comen"));
             }
 
         } catch (SQLException sqle) {
@@ -64,23 +60,22 @@ public class ProductosBBDD extends ConexionCerrar{
             cerrarConexion(con);
         }
 
-        return producto;
+        return mesa;
     }
 
 
-
-    public static void actualizarProducto(Producto producto){
+    public static void actualizarMesa(Mesas mesa){
         Connection con = conectarConBD();
 
         try {
-            PreparedStatement update = con.prepareStatement("update producto " +
-                    "set descripcion = ? , precio = ? , tipo_producto = ?" +
+            PreparedStatement update = con.prepareStatement("update mesa " +
+                    "set num_mesa = ? , num_comen = ?" +
                     "where id = ? ");
 
-            update.setString(1,producto.getDescripcion());
-            update.setDouble(2,producto.getPrecio());
-            update.setInt(3, producto.getTipoProducto().ordinal());
-            update.setInt(4, producto.getId());
+            update.setInt(1, mesa.getNum_mesa());
+            update.setInt(2, mesa.getNum_comen());
+            update.setInt(3, mesa.getId());
+
 
 
             //Ejecución del update
@@ -96,14 +91,15 @@ public class ProductosBBDD extends ConexionCerrar{
         }
     }
 
+    public static void eliminarMesa(Mesas mesa){
 
-    public static void eliminarProducto(Producto producto){
         Connection con = conectarConBD();
 
-        try {
-            PreparedStatement delete = con.prepareStatement("delete from producto where id = ? ");
 
-            delete.setInt(1, producto.getId());
+        try {
+            PreparedStatement delete = con.prepareStatement("delete from mesa where id = ? ");
+
+            delete.setInt(1, mesa.getId());
 
             //Ejecución del delete
             delete.executeUpdate();

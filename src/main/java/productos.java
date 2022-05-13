@@ -129,9 +129,35 @@ public class productos extends JFrame {
 
         botonmodificar = new JButton("Modificar");
         botones.add(botonmodificar);
+        botonmodificar.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                Producto producto = new Producto();
+
+                producto.setId(Integer.parseInt(campoId.getText()));
+                producto.setTipoProducto(TipoProducto.valueOf(campoTipo.getText()));
+                producto.setDescripcion(String.valueOf(campoDescripcion));
+                producto.setPrecio(Double.parseDouble(campoPrecio.getText()));
+
+
+                ProductosBBDD.actualizarProducto(producto);
+            }
+        });
+
+
+
 
         botoneliminar = new JButton("Eliminar");
         botones.add(botoneliminar);
+        botoneliminar.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                Producto producto = new Producto();
+                producto.setId(Integer.parseInt(campoId.getText()));
+                ProductosBBDD.eliminarProducto(producto);
+
+            }
+        });
+
+
 
 
 
