@@ -37,16 +37,6 @@ public class EmpleadosBBDD extends ConexionCerrar{
         return empleado;
     }
 
-    public static void crearActualizarEmpleado(Empleados empleado){
-
-        Empleados empBaseDatos = obtenerPorId(empleado.getId());
-
-        if(empBaseDatos != null){
-            actualizarEmpleado(empleado);
-        }else{
-            crearEmpleado(empleado);
-        }
-    }
 
     public static void crearEmpleado(Empleados empleado){
         Connection con = conectarConBD();

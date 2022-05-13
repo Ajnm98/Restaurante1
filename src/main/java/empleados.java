@@ -69,8 +69,8 @@ public class empleados extends JFrame {
 
                     empleado.setId(Integer.parseInt(campoId.getText()));
                     empleado.setCodigoEmpleado(campoCodigo.getText());
-                    empleado.setNombre(String.valueOf(campoNombre));
-                    empleado.setApellidos(String.valueOf(campoApellidos));
+                    empleado.setNombre(String.valueOf(campoNombre.getText()));
+                    empleado.setApellidos(String.valueOf(campoApellidos.getText()));
 
                     EmpleadosBBDD.crearEmpleado(empleado);
             }
