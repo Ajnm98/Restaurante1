@@ -6,8 +6,16 @@ public class Producto {
 
     private int id;
     private String descripcion;
-    private Double  precio;
+    private Double precio;
     private TipoProducto tipoProducto;
+
+
+    public Producto(int id, String descripcion, Double precio, TipoProducto tipoProducto) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.tipoProducto = tipoProducto;
+    }
 
     public Producto() {
     }

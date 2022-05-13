@@ -1,4 +1,5 @@
 import bbdd.EmpleadosBBDD;
+import bbdd.ProductosBBDD;
 import modelos.Empleados;
 import modelos.Producto;
 import modelos.TipoProducto;
@@ -102,7 +103,7 @@ public class productos extends JFrame {
                 producto.setDescripcion(String.valueOf(campoDescripcion));
                 producto.setPrecio(Double.parseDouble(campoPrecio.getText()));
 
-                EmpleadosBBDD.crearEmpleado(empleado);
+                ProductosBBDD.crearProducto(producto);
             }
         });
 
@@ -111,6 +112,20 @@ public class productos extends JFrame {
 
         botonbuscar = new JButton("Buscar");
         botones.add(botonbuscar);
+        botonbuscar.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                int idProducto = Integer.parseInt(campoId.getText());
+                Producto producto = ProductosBBDD.obtenerPorId(idProducto);
+                if(producto != null){
+                    campoId.setText(String.valueOf(producto.getId()));
+                    campoTipo.setText(String.valueOf(producto.getTipoProducto()));
+                    campoDescripcion.setText(String.valueOf(producto.getDescripcion()));
+                    campoPrecio.setText(String.valueOf(producto.getPrecio()));
+
+                }
+            }
+        });
+
 
         botonmodificar = new JButton("Modificar");
         botones.add(botonmodificar);
