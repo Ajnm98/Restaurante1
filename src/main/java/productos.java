@@ -1,12 +1,19 @@
+import bbdd.EmpleadosBBDD;
+import modelos.Empleados;
+import modelos.Producto;
+import modelos.TipoProducto;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.security.PublicKey;
 
 public class productos extends JFrame {
 
     JTextField campoId;
-    JTextField campoCodigo;
+    JTextField campoTipo;
     JTextField campoDescripcion;
     JTextField campoPrecio;
     private JButton botoncrear;
@@ -40,7 +47,7 @@ public class productos extends JFrame {
         et1.setOpaque(false);
         labels1.add(et1);
 
-        JLabel et2 = new JLabel("Codigo: ");
+        JLabel et2 = new JLabel("Tipo Producto: ");
         et2.setOpaque(false);
         labels1.add(et2);
 
@@ -53,8 +60,8 @@ public class productos extends JFrame {
         campoId = new JTextField(1);
         form1.add(campoId);
 
-        campoCodigo = new JTextField(2);
-        form1.add(campoCodigo);
+        campoTipo = new JTextField(2);
+        form1.add(campoTipo);
 
 
 
@@ -86,6 +93,21 @@ public class productos extends JFrame {
 
         botoncrear = new JButton("Crear");
         botones.add(botoncrear);
+        botoncrear.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                Producto producto = new Producto();
+
+                producto.setId(Integer.parseInt(campoId.getText()));
+                producto.setTipoProducto(TipoProducto.valueOf(campoTipo.getText()));
+                producto.setDescripcion(String.valueOf(campoDescripcion));
+                producto.setPrecio(Double.parseDouble(campoPrecio.getText()));
+
+                EmpleadosBBDD.crearEmpleado(empleado);
+            }
+        });
+
+
+
 
         botonbuscar = new JButton("Buscar");
         botones.add(botonbuscar);

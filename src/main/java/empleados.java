@@ -98,9 +98,33 @@ public class empleados extends JFrame {
 
         botonmodificar = new JButton("Modificar");
         p2.add(botonmodificar);
+        botonmodificar.addActionListener(new ActionListener( ) {
+                                             public void actionPerformed(ActionEvent e) {
+                                                 Empleados empleado = new Empleados();
+
+                                                 empleado.setId(Integer.parseInt(campoId.getText()));
+                                                 empleado.setCodigoEmpleado(campoCodigo.getText());
+                                                 empleado.setNombre(String.valueOf(campoNombre));
+                                                 empleado.setApellidos(String.valueOf(campoApellidos));
+
+                                                 EmpleadosBBDD.actualizarEmpleado(empleado);
+                                             }
+                                         });
+
+
+
+
 
         botoneliminar = new JButton("Eliminar");
         p2.add(botoneliminar);
+        botoneliminar.addActionListener(new ActionListener( ) {
+            public void actionPerformed(ActionEvent e) {
+                Empleados empleado = new Empleados();
+                    empleado.setId(Integer.parseInt(campoId.getText()));
+                    EmpleadosBBDD.eliminarEmpleado(empleado);
+
+                                       }
+                                   });
 
 
 

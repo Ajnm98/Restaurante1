@@ -79,14 +79,13 @@ public class EmpleadosBBDD extends ConexionCerrar{
 
         try {
             PreparedStatement update = con.prepareStatement("update empleado " +
-                    "set codigo_empleado = ? , nombre = ? , apellidos = ? , tipo_empledado = ?" +
+                    "set codigo_empleado = ? , nombre = ? , apellidos = ?" +
                     "where id = ? ");
 
             update.setString(1,empleado.getCodigoEmpleado());
             update.setString(2,empleado.getNombre());
             update.setString(3, empleado.getApellidos());
-            update.setInt(4, empleado.getTipoEmpleado().ordinal());
-            update.setInt(5, empleado.getId());
+            update.setInt(4, empleado.getId());
 
 
             //Ejecución del update
