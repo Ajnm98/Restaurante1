@@ -131,9 +131,8 @@ public class empleados extends JFrame {
         JSplitPane sl = new JSplitPane(SwingConstants.HORIZONTAL, p1, p2);
         sl.setOpaque(false);
 
-
         principal.add(sl, BorderLayout.CENTER);
-
+        setLocationRelativeTo(null);
 
        setVisible(true);
        setContentPane(principal);

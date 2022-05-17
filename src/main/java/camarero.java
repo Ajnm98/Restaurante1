@@ -43,7 +43,7 @@ public class camarero extends JFrame {
 
     class abrirVentanaAforo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // new aforo();
+            new aforo();
 
         }
     }

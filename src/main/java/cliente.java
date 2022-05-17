@@ -31,7 +31,7 @@ public class cliente extends JFrame {
 
     class abrirVentanaCarta implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-           // new carta();
+           new carta();
 
         }
     }
