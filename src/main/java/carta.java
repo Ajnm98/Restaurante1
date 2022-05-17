@@ -18,32 +18,30 @@ public class carta extends JFrame {
         super("Carta");
 
         JPanel panelPrincipal = crearPanelImagenFondo();
-        //PANEL POR PESTAÑAS
         JTabbedPane principal = new JTabbedPane();
         principal.setOpaque(false);
 
-        //Obtenemos los productos
         List<Producto> listaProductos = ProductosBBDD.obtenerProductos();
         Map<TipoProducto, List<Producto>> productosPorTipo = listaProductos.stream().collect(Collectors.groupingBy(Producto::getTipoProducto));
 
         //Creamos las pestanyas por tipoProducto
         for(TipoProducto tipoProducto : productosPorTipo.keySet()){
-            JPanel pestana = crearPanelImagenCarta();
-            pestana.setLayout(new BorderLayout());
-            JPanel panelProductos = new JPanel(new GridLayout(0,2));
-            panelProductos.setBorder(BorderFactory.createEmptyBorder(200,100,200,300));
-            panelProductos.setOpaque(false);
+            JPanel carta = crearPanelImagenCarta();
+            carta.setLayout(new BorderLayout());
+            JPanel panelpro = new JPanel(new GridLayout(0,2));
+            panelpro.setBorder(BorderFactory.createEmptyBorder(200,100,200,300));
+            panelpro.setOpaque(false);
 
             for(Producto p : productosPorTipo.get(tipoProducto)){
                 JLabel nombreProducto = new JLabel(p.getDescripcion());
                 nombreProducto.setForeground(Color.WHITE);
                 JLabel precio = new JLabel(p.getPrecio().toString() + "€");
                 precio.setForeground(Color.WHITE);
-                panelProductos.add(nombreProducto);
-                panelProductos.add(precio);
+                panelpro.add(nombreProducto);
+                panelpro.add(precio);
             }
-            pestana.add(panelProductos,BorderLayout.CENTER);
-            principal.add(tipoProducto.toString(),pestana);
+            carta.add(panelpro,BorderLayout.CENTER);
+            principal.add(tipoProducto.toString(),carta);
 
         }
 

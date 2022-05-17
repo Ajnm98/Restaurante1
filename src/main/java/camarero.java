@@ -50,14 +50,14 @@ public class camarero extends JFrame {
 
     class abrirVentanaPedidos implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // new pedidos();
+            new comanda();
 
         }
     }
 
     class abrirVentanaCuentas implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // new cuenta();
+            new ticket();
 
         }
     }
