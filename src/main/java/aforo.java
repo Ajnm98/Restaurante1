@@ -70,7 +70,7 @@ public class aforo extends JFrame {
     }
 
     public static  JButton crearBotonMesa(Mesas mesa){
-        JButton boton = new JButton(mesa.toString());
+        JButton boton = new JButton(String.valueOf(mesa.getNum_mesa()));
         boton.setName(String.valueOf(mesa.getId()));
         String ruta = new File("").getAbsolutePath() + "\\imagenes\\mesa.png" ;
         ImageIcon icono = new ImageIcon(ruta);
