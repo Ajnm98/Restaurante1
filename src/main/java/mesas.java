@@ -44,18 +44,21 @@ public class mesas extends JFrame {
 
         JLabel et1 = new JLabel("ID: ");
      // et1.setSize(1000, 1000);
+        et1.setForeground(Color.WHITE);
         et1.setOpaque(false);
         formulario.add(et1);
         campoId = new JTextField(1);
         formulario.add(campoId);
 
         JLabel et2 = new JLabel("Num_Mesa: ");
+        et2.setForeground(Color.WHITE);
         et2.setOpaque(false);
         formulario.add(et2);
         campoNum_Mesa = new JTextField(2);
         formulario.add(campoNum_Mesa);
 
         JLabel et3 = new JLabel("Num_Comen: ");
+        et3.setForeground(Color.WHITE);
        et3.setOpaque(false);
         formulario.add(et3);
         campoNum_Comen = new JTextField(3);
@@ -164,8 +167,8 @@ public class mesas extends JFrame {
     }
 
     private JPanel crearPanelImagenFondo(){
-        ImageIcon imagen = new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\wood.jpg");
-        Image imagenLimitadaTamanyo = imagen.getImage().getScaledInstance(1000, 1000,  java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imagen = new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\mesasbar.jpg");
+        Image imagenLimitadaTamanyo = imagen.getImage().getScaledInstance(600, 350,  java.awt.Image.SCALE_SMOOTH);
         imagen.setImage(imagenLimitadaTamanyo);
         JPanel panel = new JPanel(){
             public void paintComponent(Graphics g) {

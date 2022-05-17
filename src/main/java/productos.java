@@ -45,10 +45,12 @@ public class productos extends JFrame {
         labels1.setOpaque(false);
 
         JLabel et1 = new JLabel("ID: ");
+        et1.setForeground(Color.WHITE);
         et1.setOpaque(false);
         labels1.add(et1);
 
         JLabel et2 = new JLabel("Tipo Producto: ");
+        et2.setForeground(Color.WHITE);
         et2.setOpaque(false);
         labels1.add(et2);
 
@@ -71,10 +73,12 @@ public class productos extends JFrame {
         labels2.setOpaque(false);
 
         JLabel et3 = new JLabel("Descripción: ");
+        et3.setForeground(Color.WHITE);
         et3.setOpaque(false);
         labels2.add(et3);
 
         JLabel et4 = new JLabel("Precio: ");
+        et4.setForeground(Color.WHITE);
         et4.setOpaque(false);
         labels2.add(et4);
 
@@ -186,8 +190,8 @@ public class productos extends JFrame {
 
 
     private JPanel crearPanelImagenFondo(){
-        ImageIcon imagen = new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\wood.jpg");
-        Image imagenLimitadaTamanyo = imagen.getImage().getScaledInstance(1000, 1000,  java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imagen = new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\alma.jpg");
+        Image imagenLimitadaTamanyo = imagen.getImage().getScaledInstance(600, 450,  java.awt.Image.SCALE_SMOOTH);
         imagen.setImage(imagenLimitadaTamanyo);
         JPanel panel = new JPanel(){
             public void paintComponent(Graphics g) {

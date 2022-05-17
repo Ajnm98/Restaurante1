@@ -55,8 +55,8 @@ public class aforo extends JFrame {
     }
 
     private JPanel crearPanelImagenFondo() {
-        ImageIcon imagen = new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\wood.jpg");
-        Image imagenLimitadaTamanyo = imagen.getImage().getScaledInstance(1000, 500, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imagen = new ImageIcon("C:\\Users\\daw20\\IdeaProjects\\Restaurante1\\imagenes\\mesasbar.jpg");
+        Image imagenLimitadaTamanyo = imagen.getImage().getScaledInstance(1000, 550, java.awt.Image.SCALE_SMOOTH);
         imagen.setImage(imagenLimitadaTamanyo);
         JPanel panel = new JPanel() {
             public void paintComponent(Graphics g) {
@@ -72,9 +72,9 @@ public class aforo extends JFrame {
     public static  JButton crearBotonMesa(Mesas mesa){
         JButton boton = new JButton(mesa.toString());
         boton.setName(String.valueOf(mesa.getId()));
-        String ruta = new File("").getAbsolutePath() + "\\imagenes\\mesa_incono.png" ;
+        String ruta = new File("").getAbsolutePath() + "\\imagenes\\mesa.png" ;
         ImageIcon icono = new ImageIcon(ruta);
-        Image imagenLimitadaTamanyo = icono.getImage().getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
+        Image imagenLimitadaTamanyo = icono.getImage().getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
         icono.setImage(imagenLimitadaTamanyo);
         boton.setIcon(icono);
         boton.setFocusPainted(false);
