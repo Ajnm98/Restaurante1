@@ -37,10 +37,8 @@ public class carta extends JFrame {
             for(Producto p : productosPorTipo.get(tipoProducto)){
                 JLabel nombreProducto = new JLabel(p.getDescripcion());
                 nombreProducto.setForeground(Color.WHITE);
-                nombreProducto.setFont(new Font("Comic Sans", Font.PLAIN, 24));
                 JLabel precio = new JLabel(p.getPrecio().toString() + "€");
                 precio.setForeground(Color.WHITE);
-                precio.setFont(new Font("Comic Sans", Font.PLAIN, 24));
                 panelProductos.add(nombreProducto);
                 panelProductos.add(precio);
             }
